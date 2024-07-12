@@ -1,2 +1,14 @@
-<h1>Messages#index</h1>
-<p>Find me in app/views/messages/index.html.erb</p>
+<h1>CHAT INDEX</h1>
+
+<div id="messages">
+  <%= render @messages %>
+</div>
+
+<%= form_with model: @message, remote: true do |form| %>
+  <div class="field">
+    <%= form.text_area :content %>
+  </div>
+  <div class="actions">
+    <%= form.submit 'send' %>
+  </div>
+<% end %>

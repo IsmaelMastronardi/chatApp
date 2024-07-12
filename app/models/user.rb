@@ -7,4 +7,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  def chats
+    Chat.where('user1_id = ? OR user2_id = ?', self.id, self.id)
+  end
 end

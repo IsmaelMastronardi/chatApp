@@ -6,7 +6,7 @@ class ChatsController < ApplicationController
   end
 
   def create
-    @chat = Chat.between(params[:user1_id], params[:user2_id]).first_or_create!(chat_params)
+    @chat = Chat.between(chat_params[:user1_id], chat_params[:user2_id]).first_or_create!(chat_params)
     redirect_to chat_path(@chat)
   end
 

@@ -1,7 +1,8 @@
 import consumer from "channels/consumer"
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbo:load', () => {
   const chatElement = document.getElementById('chat-id');
+
   if (chatElement) {
     const chatId = chatElement.getAttribute('data-chat-id')
 

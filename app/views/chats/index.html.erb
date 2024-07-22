@@ -1,0 +1,9 @@
+<h1>Your Chats</h1>
+
+<% @chats.each do |chat| %>
+  <div>
+    <%= link_to "Chat with #{chat.user1 == current_user ? chat.user2.email : chat.user1.email}", chat_path(chat) %>
+  </div>
+<% end %>
+
+<%= render "create"  %>

@@ -6,9 +6,11 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = current_user.messages.build(message_params)
+    @chat = Chat.find(params[:chat_id])
+    @message = @chat.messages.build(message_params)
+    @message.user = current_user
     if @message.save
-      ActionCable.server.broadcast 'chat_channel', {message: render_message(@message)}
+      ActionCable.server.broadcast "chat_channel_#{@chat.id}", {message: render_message(@message)}
     end
   end
 
